@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package scenedescriber;
+
+// High-level service for your app
+service SceneService {
+  // 1. Simple greeting: client sends name, server responds with greeting message
+  rpc SayHello (GreetRequest) returns (GreetReply);
+
+  // 2. Describe the scene in an image
+  rpc DescribeScene (ImageRequest) returns (SceneReply);
+
+  // 3. Ask a question about the scene/image
+  rpc AskAboutScene (SceneQuestionRequest) returns (SceneReply);
+
+  // 4. OCR: extract text from an image of handwriting / print
+  rpc OcrImage (ImageRequest) returns (OcrReply);
+}
+
+// Messages
+
+message GreetRequest {
+  string name = 1;
+}
+
+message GreetReply {
+  string message = 1;
+}
+
+message ImageRequest {
+  // Raw bytes of the image (JPEG/PNG)
+  bytes image = 1;
+  // Optional filename, for logging / debugging
+  string filename = 2;
+}
+
+message SceneQuestionRequest {
+  bytes image   = 1;
+  string filename = 2;
+  string question = 3;  // e.g. "What is the tiger doing?"
+}
+
+message SceneReply {
+  string text = 1;  // natural language description / answer
+}
+
+message OcrReply {
+  string text = 1;  // recognized text
+}
