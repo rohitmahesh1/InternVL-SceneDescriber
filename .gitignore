@@ -172,3 +172,29 @@ data_process/
 
 batchscript-*
 results/
+# ---- Local additions ----
+
+# Local datasets
+data/
+datasets/
+outputs/
+
+# Experiments / scratch
+experiments/
+tmp/
+
+# Local configs
+.env
+.env.local
+
+# Model outputs
+*.pt
+*.pth
+*.ckpt
+*.onnx
+# ---- Local environment ----
+bin/
+share/
+pyvenv.cfg
+# ---- Generated iOS gRPC (owned by SceneDescriber) ----
+ios-gen/
