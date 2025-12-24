@@ -2,7 +2,7 @@
 
 This repo is based on [OpenGVLab/InternVL](https://github.com/OpenGVLab/InternVL) and extends it with a **scene description / visual QA server** that you can call from an iOS app over gRPC.
 
-The core idea:  
+The core idea (multi-model scene describer):  
 > Take an image → run it through `OpenGVLab/InternVL3-1B` → return a natural-language description or an answer to a visual question.
 
 I use this in a companion iOS app (“SceneDescriber”) that captures photos with the iPhone camera and calls this server via gRPC.
@@ -21,12 +21,12 @@ I use this in a companion iOS app (“SceneDescriber”) that captures photos wi
 
   Implemented in `server_grpc.py`:
 
-  - `SayHello(name)` → simple hello test (good for connectivity)
+  - `SayHello(name)` → simple hello welcome (good connectivity check)
   - `DescribeScene(image)` → long-form description: “what’s going on in this picture?”
   - `AskAboutScene(image, question)` → visual question answering
-  - `OcrImage(image)` → placeholder endpoint for future OCR integration (DeepSeekOCR / TrOCR)
+  - `OcrImage(image)` →  endpoint for OCR integration (DeepSeekOCR / TrOCR)
 
-- ✅ **REST / HTTP demo (optional)**
+- ✅ **REST / HTTP**
 
   - `server.py` exposes a FastAPI endpoint for simple `curl` / browser testing
 
